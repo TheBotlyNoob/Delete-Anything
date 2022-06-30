@@ -66,6 +66,8 @@ fn main() -> Result<()> {
             }
         }
 
+        kill::by_name(&file)?;
+
         if let Err(e) = std::fs::remove_file(&file) {
             if e.kind() != std::io::ErrorKind::NotFound {
                 println!("[!] Failed to delete {file}: {e:#?}.");
@@ -73,8 +75,6 @@ fn main() -> Result<()> {
         } else {
             println!("[+] Deleted {file}.");
         }
-
-        kill::by_name(&file)?;
 
         Ok(())
     }
