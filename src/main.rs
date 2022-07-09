@@ -23,7 +23,7 @@ fn main() -> Result<()> {
     });
 
     // this allows us to write to system protected files.
-    if unsafe { !IsUserAnAdmin().as_bool() } {
+    if unsafe { IsUserAnAdmin().as_bool() } {
         let mut process_token = HANDLE::default();
 
         unsafe {
